@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fff9f7">
+    <title>Cherry Cake | Panel interno</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#" aria-label="Cherry Cake, inicio" data-view="inicio">
+          <span class="brand-mark" aria-hidden="true">C</span>
+          <span class="brand-copy">
+            <strong>cherry cake</strong>
+            <small>repostería artesanal</small>
+          </span>
+        </a>
+
+        <div class="workspace-label">ESPACIO DE TRABAJO</div>
+        <nav class="main-nav" aria-label="Navegación principal">
+          <button class="nav-item active" data-view="inicio"><span class="nav-icon">⌂</span>Inicio</button>
+          <button class="nav-item" data-view="pedidos"><span class="nav-icon">▤</span>Pedidos<span class="nav-count" id="nav-order-count">0</span></button>
+          <button class="nav-item" data-view="catalogo"><span class="nav-icon">▧</span>Catálogo</button>
+          <button class="nav-item" data-view="insumos"><span class="nav-icon">♧</span>Insumos</button>
+          <button class="nav-item" data-view="clientes"><span class="nav-icon">♙</span>Clientes</button>
+          <button class="nav-item" data-view="pagos"><span class="nav-icon">＄</span>Pagos</button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="nav-item" data-view="configuracion"><span class="nav-icon">⚙</span>Configuración</button>
+          <div class="profile">
+            <span class="avatar">K</span>
+            <span class="profile-copy"><strong>Karina</strong><small>Repostera</small></span>
+            <span class="profile-menu" aria-hidden="true">···</span>
+          </div>
+        </div>
+      </aside>
+
+      <div class="main-column">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobile-menu" aria-label="Abrir menú">☰</button>
+          <div class="breadcrumb"><span>Cherry Cake</span><span class="crumb-separator">/</span><strong id="breadcrumb-current">Inicio</strong></div>
+          <div class="topbar-actions">
+            <label class="search-box">
+              <span aria-hidden="true">⌕</span>
+              <input id="global-search" type="search" placeholder="Buscar pedidos, clientes..." aria-label="Buscar">
+              <kbd>⌘ K</kbd>
+            </label>
+            <button class="icon-button notification-button" id="notification-button" aria-label="Notificaciones">
+              ♧<span class="notification-dot"></span>
+            </button>
+            <span class="top-avatar" aria-label="Perfil de Karina">K</span>
+          </div>
+        </header>
+
+        <main id="main-content" class="content" tabindex="-1"></main>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog class="order-dialog" id="order-dialog" aria-labelledby="dialog-title">
+      <form id="order-form">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">NUEVO REGISTRO</p>
+            <h2 id="dialog-title">Crear pedido</h2>
+          </div>
+          <button class="icon-button dialog-close" type="button" id="close-dialog" aria-label="Cerrar">×</button>
+        </div>
+        <div class="form-grid">
+          <label class="field field-wide">Nombre del cliente<input name="customer" required placeholder="Ej. Mariana López"></label>
+          <label class="field">Teléfono<input name="phone" type="tel" placeholder="55 1234 5678"></label>
+          <label class="field">Fecha y hora de entrega<input name="date" type="datetime-local" required></label>
+          <label class="field">Personas<input name="people" type="number" min="1" value="10" required></label>
+          <label class="field">Producto
+            <select name="product">
+              <option>Pastel personalizado</option>
+              <option>Pay</option>
+              <option>Roles</option>
+              <option>Galletas</option>
+              <option>Gelatina</option>
+              <option>Flan</option>
+              <option>Pan de muerto</option>
+              <option>Rosca de Reyes</option>
+            </select>
+          </label>
+          <label class="field">Precio acordado (MXN)<input name="price" type="number" min="0" step="0.01" placeholder="0.00"></label>
+          <label class="field field-wide">Foto de referencia (URL)<input name="photo" type="url" placeholder="https://..."></label>
+          <label class="field field-wide">Personalización y notas<textarea name="notes" rows="3" placeholder="Sabor, colores, dedicatoria..."></textarea></label>
+        </div>
+        <div class="dialog-actions">
+          <button class="button button-quiet" type="button" id="cancel-dialog">Cancelar</button>
+          <button class="button button-primary" type="submit">Guardar pedido <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>
